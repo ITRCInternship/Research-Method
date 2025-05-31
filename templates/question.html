@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card card-custom p-4 mb-4 text-end">
+  <h4 class="mb-3">سوال {{ qid+1 }} از {{ total }}</h4>
+  <div class="progress mb-4">
+    <div class="progress-bar bg-primary" role="progressbar" style="width: {{ progress }}%;"></div>
+  </div>
+  <form method="post">
+    <div class="mb-3">
+      <label class="form-label fw-bold">{{ question.text }}</label>
+      {% if question.type == 'text' %}
+        <textarea name="answer" class="form-control" rows="4" required></textarea>
+      {% elif question.type == 'multiple' %}
+        {% for opt in question.options %}
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="checkbox" name="answer[]" value="{{ opt }}" id="opt{{ loop.index }}">
+            <label class="form-check-label" for="opt{{ loop.index }}">{{ opt }}</label>
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for opt in question.options %}
+          <div class="form-check mb-2">
+            <input class="form-check-input" type="radio" name="answer" value="{{ opt }}" id="opt{{ loop.index }}" required>
+            <label class="form-check-label" for="opt{{ loop.index }}">{{ opt }}</label>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="d-flex justify-content-between">
+      <button type="submit" name="direction" value="prev" class="btn btn-secondary" {% if qid == 0 %}disabled{% endif %}>⬅ قبلی</button>
+      <button type="submit" name="direction" value="next" class="btn btn-primary">بعدی ➜</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
