@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>ثبت‌نام</title>
+    <style>
+        body { font-family: Tahoma, sans-serif; direction: rtl; padding: 20px; }
+        .container { max-width: 400px; margin: auto; }
+        input { width: 100%; padding: 10px; margin: 5px 0; box-sizing: border-box; }
+        button { width: 100%; padding: 10px; background-color: #2196f3; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .message { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>ثبت‌نام</h2>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="message">{{ messages[0] }}</div>
+          {% endif %}
+        {% endwith %}
+        <form method="post">
+            <input type="text" name="username" placeholder="نام کاربری" required>
+            <input type="password" name="password" placeholder="رمز عبور" required>
+            <button type="submit">ثبت‌نام</button>
+        </form>
+        <p>حساب دارید؟ <a href="{{ url_for('auth.login') }}">ورود</a></p>
+    </div>
+</body>
+</html>
