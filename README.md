@@ -1,60 +1,3 @@
-# Project Structure
-```
-
-flask_research_app/
-├── app/
-│   ├── __init__.py
-│   ├── routes.py
-│   ├── ollama_client.py
-│   ├── auth.py
-│   └── templates/
-│       ├── question.html
-│       ├── result.html
-│       ├── login.html
-│       └── register.html
-├── config.py
-├── questions.json
-├── Dockerfile
-├── README.md
-├── requirements.txt
-├── run.py
-└── users.db
-```
-
-```text
-requirements.txt
-Flask>=2.0
-requests>=2.0
-werkzeug>=2.0
-```
-
-```dockerfile
-# Dockerfile
-FROM python:3.10-slim
-
-# Set environment variables
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-
-# Create working directory
-WORKDIR /app
-
-# Copy requirements and install
-COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
-
-# Copy project
-COPY . /app/
-
-# Expose port
-EXPOSE 5003
-
-# Run application
-CMD ["python", "run.py"]
-```
-
-````markdown
-# README.md
 
 ## Overview
 
@@ -82,7 +25,7 @@ Environment variables (optional, default values shown):
    ```bash
    python3 -m venv venv
    source venv/bin/activate
-````
+    ```
 
 2. Install dependencies:
 
@@ -137,8 +80,4 @@ Environment variables (optional, default values shown):
 3. On completion, view the generated research method report.
 4. Log out when finished.
 
-## Notes
 
-* Ensure the Ollama server is running and the `OLLAMA_URL` is correct before launching.
-* To reset the database, delete `users.db` and run `flask init-db` again.
-  ` `
