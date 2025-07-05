@@ -1,30 +1,316 @@
 <!DOCTYPE html>
 <html lang="fa">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>ثبت‌نام</title>
     <style>
-        body { font-family: Tahoma, sans-serif; direction: rtl; padding: 20px; }
-        .container { max-width: 400px; margin: auto; }
-        input { width: 100%; padding: 10px; margin: 5px 0; box-sizing: border-box; }
-        button { width: 100%; padding: 10px; background-color: #2196f3; color: white; border: none; border-radius: 5px; cursor: pointer; }
-        .message { color: red; }
+      /* CSS Document */
+      @charset "UTF-8";
+
+      @font-face {
+        font-family: "Vazir";
+        src: url("../fonts/Vazir.eot");
+        src: local("../fonts/Vazir"), url("../fonts/Vazir.woff") format("woff"),
+          url("../fonts/Vazir.ttf") format("truetype"),
+          url("../fonts/Vazir.svg") format("svg");
+      }
+      * {
+        font-family: "Vazir";
+      }
+
+      ::selection {
+        background: #2d2f36;
+      }
+      ::-webkit-selection {
+        background: #2d2f36;
+      }
+      ::-moz-selection {
+        background: #2d2f36;
+      }
+      body {
+        background: white;
+        margin: 0;
+        padding: 20px;
+        font-family: "Vazir";
+        direction: rtl;
+      }
+      .page {
+        border-radius: 1rem;
+        background: #d1e4f7;
+        display: flex;
+        flex-direction: column;
+        height: calc(100% - 40px);
+        position: absolute;
+        place-content: center;
+        width: calc(100% - 40px);
+      }
+      @media (max-width: 767px) {
+        .page {
+          height: auto;
+          margin-bottom: 20px;
+          padding-bottom: 20px;
+        }
+      }
+      .container {
+        display: flex;
+        height: 320px;
+        margin: 0 auto;
+        width: 640px;
+      }
+      @media (max-width: 767px) {
+        .container {
+          flex-direction: column;
+          height: 630px;
+          width: 320px;
+        }
+      }
+      .left {
+        border-radius: 0rem 1.5rem 1.5rem 0rem;
+        background: rgb(243, 243, 243);
+        height: calc(100% - 40px);
+        top: 20px;
+        position: relative;
+        width: 50%;
+      }
+      @media (max-width: 767px) {
+        .left {
+          height: 100%;
+          right: 20px;
+          width: calc(100% - 40px);
+          max-height: 270px;
+        }
+      }
+      .login {
+        font-size: 50px;
+        font-weight: 900;
+        margin: 50px 40px 40px;
+      }
+      .eula {
+        color: #999;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 40px;
+      }
+      .right {
+        background: linear-gradient(
+          97deg,
+          rgba(29, 121, 139, 1) 0%,
+          rgb(66, 147, 160) 100%
+        );
+        box-shadow: 0px 0px 40px 16px rgba(0, 0, 0, 0.22);
+        color: #ffffff;
+        position: relative;
+        width: 50%;
+        overflow: hidden;
+        border-radius: 1.5rem;
+      }
+      @media (max-width: 767px) {
+        .right {
+          flex-shrink: 0;
+          height: 100%;
+          width: 100%;
+          max-height: 350px;
+        }
+      }
+      svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+      }
+      path {
+        fill: none;
+        stroke: url(#linearGradient);
+        stroke-width: 4;
+        stroke-dasharray: 240 1386;
+      }
+      .form {
+        margin: 40px;
+        position: relative;
+        z-index: 1;
+        gap: 10px;
+      }
+      input {
+        color: #c2c2c5;
+        display: block;
+        font-size: 14px;
+        height: 16px;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        background: transparent;
+        border: 0;
+        color: #f2f2f2;
+        font-size: 20px;
+        height: 30px;
+        line-height: 30px;
+        outline: none !important;
+        width: 100%;
+      }
+      input::-moz-focus-inner {
+        border: 0;
+      }
+      #submit {
+        color: #ffffff;
+        margin-top: 40px;
+        transition: color 300ms;
+        background: none;
+        cursor: pointer;
+      }
+      #submit:focus {
+        color: #0614da;
+      }
+      #submit:active {
+        color: #ff0707;
+      }
+      .message {
+        color: red;
+      }
     </style>
-</head>
-<body>
-    <div class="container">
-        <h2>ثبت‌نام</h2>
-        {% with messages = get_flashed_messages() %}
-          {% if messages %}
+  </head>
+  <body>
+    <div class="page">
+      <div class="container">
+        <div class="left">
+          <div class="login">ثبت‌نام</div>
+          <div class="eula">
+            با ثبت‌نام در سایت شما با قوانین و مقررات سایت موافقت کرده‌اید
+            <p>حساب دارید؟ <a href="{{ url_for('auth.login') }}">ورود</a></p>
+          </div>
+        </div>
+        <div class="right">
+          <!-- خط SVG با گرادیان آبی -->
+          <svg viewBox="0 0 320 300">
+            <defs>
+              <linearGradient
+                id="linearGradient"
+                x1="13"
+                y1="193.49992"
+                x2="307"
+                y2="193.49992"
+                gradientUnits="userSpaceOnUse"
+              >
+                <stop style="stop-color: #1eff00" offset="0" id="stop876" />
+                <stop style="stop-color: #ff5100" offset="1" id="stop878" />
+              </linearGradient>
+            </defs>
+            <path
+              d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143"
+            />
+          </svg>
+          <div class="form">
+            {% with messages = get_flashed_messages() %} {% if messages %}
             <div class="message">{{ messages[0] }}</div>
-          {% endif %}
-        {% endwith %}
-        <form method="post">
-            <input type="text" name="username" placeholder="نام کاربری" required>
-            <input type="password" name="password" placeholder="رمز عبور" required>
-            <button type="submit">ثبت‌نام</button>
-        </form>
-        <p>حساب دارید؟ <a href="{{ url_for('auth.login') }}">ورود</a></p>
+            {% endif %} {% endwith %}
+            <form method="POST" action="{{ url_for('auth.register') }}">
+              <label for="username">نام کاربری</label>
+              <input id="username" type="text" name="username" required />
+              <label for="password">رمز عبور</label>
+              <input id="password" type="password" name="password" required />
+              <input type="submit" id="submit" value="ثبت‌نام" />
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+
+    <!-- اسکریپت انیمیشن پیشرفته -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+      // تنظیم مسیر SVG برای انیمیشن
+      var path = document.querySelector("path");
+      path.setAttribute("stroke-dasharray", "240 1386");
+      path.setAttribute("stroke-dashoffset", "0");
+
+      var current = null;
+
+      // انیمیشن برای نام کاربری
+      document
+        .querySelector("#username")
+        .addEventListener("focus", function (e) {
+          if (current) current.pause();
+          current = anime({
+            targets: "path",
+            strokeDashoffset: {
+              value: 0,
+              duration: 700,
+              easing: "easeOutQuart",
+            },
+            strokeDasharray: {
+              value: "240 1386",
+              duration: 700,
+              easing: "easeOutQuart",
+            },
+          });
+        });
+
+      // انیمیشن برای رمز عبور
+      document
+        .querySelector("#password")
+        .addEventListener("focus", function (e) {
+          if (current) current.pause();
+          current = anime({
+            targets: "path",
+            strokeDashoffset: {
+              value: -336,
+              duration: 700,
+              easing: "easeOutQuart",
+            },
+            strokeDasharray: {
+              value: "240 1386",
+              duration: 700,
+              easing: "easeOutQuart",
+            },
+          });
+        });
+
+      // انیمیشن برای دکمه ثبت‌نام
+      document.querySelector("#submit").addEventListener("focus", function (e) {
+        if (current) current.pause();
+        current = anime({
+          targets: "path",
+          strokeDashoffset: {
+            value: -730,
+            duration: 700,
+            easing: "easeOutQuart",
+          },
+          strokeDasharray: {
+            value: "530 1386",
+            duration: 700,
+            easing: "easeOutQuart",
+          },
+        });
+      });
+
+      // انیمیشن برای کلیک روی دکمه ثبت‌نام
+      document.querySelector("#submit").addEventListener("click", function (e) {
+        if (current) current.pause();
+        current = anime({
+          targets: "path",
+          strokeDashoffset: {
+            value: -730,
+            duration: 700,
+            easing: "easeOutQuart",
+          },
+          strokeDasharray: {
+            value: "530 1386",
+            duration: 700,
+            easing: "easeOutQuart",
+          },
+        });
+      });
+
+      // بررسی برای اطمینان از لود شدن Anime.js
+      window.addEventListener("load", function () {
+        if (typeof anime === "undefined") {
+          console.error(
+            "Anime.js لود نشده است. لطفاً اتصال به CDN را بررسی کنید."
+          );
+        } else {
+          console.log("Anime.js با موفقیت لود شد.");
+        }
+      });
+    </script>
+  </body>
 </html>
