@@ -4,7 +4,6 @@ var path = document.querySelector("path");
 
       var current = null;
 
-      // انیمیشن برای نام کاربری
       document
         .querySelector("#username")
         .addEventListener("focus", function (e) {
@@ -24,7 +23,7 @@ var path = document.querySelector("path");
           });
         });
 
-      // انیمیشن برای رمز عبور
+ 
       document
         .querySelector("#password")
         .addEventListener("focus", function (e) {
@@ -44,7 +43,7 @@ var path = document.querySelector("path");
           });
         });
 
-      // انیمیشن برای دکمه ورود
+
       document.querySelector("#submit").addEventListener("focus", function (e) {
         if (current) current.pause();
         current = anime({
@@ -62,10 +61,9 @@ var path = document.querySelector("path");
         });
       });
 
-      // جلوگیری از رفتار پیش‌فرض submit و پریدن فوکوس
+
       document.querySelector("#submit").addEventListener("click", function (e) {
-        // اگر نیازی به جلوگیری از ارسال فرم نیست، این خط را حذف کنید
-        // e.preventDefault();
+
         if (current) current.pause();
         current = anime({
           targets: "path",
@@ -82,7 +80,7 @@ var path = document.querySelector("path");
         });
       });
 
-      // بررسی برای اطمینان از لود شدن Anime.js
+      
       window.addEventListener("load", function () {
         if (typeof anime === "undefined") {
           console.error(

@@ -30,13 +30,34 @@ body {
   );
   transform: translateX(-100%);
 }
+.question-container-wrapper {
+  width: 800px;
+  margin: auto;
+  transition: height 0.5s ease;
+}
 
 .question-container {
+  justify-content: center;
   position: relative;
-  width: 800px;
+  height: auto;
+  min-height: 350px;
+  margin: auto;
+  align-items: center;
+  background: linear-gradient(135deg, #646666, #2a3030);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  color: white;
+  transition: all 0.3s ease;
+  border-radius: 20rem 2rem 2rem 20rem;
+  overflow: hidden;
+}
+.question-container {
+  justify-content: center;
+  position: relative;
+  width: 900px;
   height: 350px;
   margin: auto;
-  background: linear-gradient(135deg, #30b1b6, #028181);
+  background: linear-gradient(135deg, #797a7a, #242727);
   border-radius: 1.5rem;
   padding: 2rem;
   color: white;
@@ -44,19 +65,15 @@ body {
   border-radius: 20rem 2rem 2rem 20rem;
 }
 
-.question-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 10px 50px 20px rgba(0, 0, 0, 0.3);
-}
 .question-container .circle {
   position: absolute;
-  top: 25px; /* فاصله از بالا */
-  left: -520px; /* فاصله از چپ */
+  top: 25px;
+  left: -600px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 80px; /* کوچک‌تر کردم که داخل کارت جا شه */
+  width: 80px;
   height: 80px;
   border-radius: 50%;
 }
@@ -122,13 +139,16 @@ button:disabled {
   width: 300px;
   height: 300px;
   border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
 }
 .container2 .circle::before {
   content: "";
   position: absolute;
   inset: 5px;
   border-radius: 50%;
-  background: #222;
+  background: rgb(27, 27, 27);
   opacity: 0.8;
 }
 .container2 .circle::after {
@@ -167,6 +187,9 @@ button:disabled {
 .cont3 {
   position: relative;
   left: -20px;
-  top: -250px;
+  top: -300px;
   width: 500px;
+}
+textarea {
+  border-radius: 0.25rem;
 }

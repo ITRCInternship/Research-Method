@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         }
         progress.style.background = `conic-gradient(${color} ${degree}%, #333 0%)`;
         number.innerHTML = degree + "<span>%</span>";
-      }, 20); // سرعت انیمیشن رو کم یا زیاد کن
+      }, 20); 
     });
   });
   
