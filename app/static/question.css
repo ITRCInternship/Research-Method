@@ -2,8 +2,26 @@ body {
   font-family: "Vazir";
   direction: rtl;
   padding: 20px;
+  position:relative;
+  display: flex;
   justify-content: center;
+  align-items: center;
   min-height: 100vh;
+  /* background-image:url(./img/1\ \(1\).jpg);
+  background-repeat: no-repeat;
+  background-size: cover;         
+  background-attachment: fixed;  
+  background-position: center; */
+}
+.page {
+  border-radius: 1rem;
+  background: #d1fad8;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 40px);
+  position: absolute;
+  place-content: center;
+  width: calc(100% - 40px);
 }
 .progress-bar {
   background-color: #e0e0e0;
@@ -43,7 +61,7 @@ body {
   min-height: 350px;
   margin: auto;
   align-items: center;
-  background: linear-gradient(135deg, #646666, #2a3030);
+  background: linear-gradient(135deg, #646666, #2a302c);
   border-radius: 1.5rem;
   padding: 2rem;
   color: white;
@@ -57,7 +75,7 @@ body {
   width: 900px;
   height: 350px;
   margin: auto;
-  background: linear-gradient(135deg, #797a7a, #242727);
+  background: linear-gradient(135deg, #4e884d, #013b0a);
   border-radius: 1.5rem;
   padding: 2rem;
   color: white;
@@ -170,6 +188,7 @@ button:disabled {
   z-index: 10;
   line-height: 0rem;
   font-size: 5rem;
+  top:20px;
 }
 .container2 .circle .number span {
   font-size: 0.5em;
@@ -181,8 +200,8 @@ button:disabled {
   z-index: 10;
   font-weight: 500;
   font-size: 1.5em;
-  text-transform: capitalize;
   line-height: 0em;
+  top:-20px;
 }
 .cont3 {
   position: relative;
