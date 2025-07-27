@@ -60,3 +60,7 @@ def question(qid):
         total=total,
         progress=progress
     )
+
+@main_bp.route('/about')
+def about():
+    return render_template('about.html')
