@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <title>درباره ما</title>
+</head>
+<body>
+    <h1>درباره پروژه</h1>
+    <p>این پروژه یک سیستم ساده احراز هویت با استفاده از Flask و SQLite است.</p>
+
+    <h2>اعضای تیم</h2>
+    <ul>
+        <li> رضایی - توسعه‌دهنده بک‌اند</li>
+        <li> محمدی - طراحی رابط کاربری</li>
+        <li> کریمی - تست و مستندسازی</li>
+    </ul>
+
+    <a href="{{ url_for('auth.login') }}">بازگشت به ورود</a>
+</body>
+</html>
