@@ -64,3 +64,10 @@ observer.observe(document.querySelector('.cont3'), {
   subtree: true,
   characterData: true
 });
+document.addEventListener('DOMContentLoaded', function () {
+  const questionBox = document.querySelector('.cont3');
+  setTimeout(() => {
+    questionBox.classList.add('visible');
+  }, 100);
+});
+

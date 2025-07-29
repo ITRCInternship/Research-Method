@@ -300,28 +300,17 @@ textarea {
   margin-top: 2rem;
 }
 
-
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background-color: #f5f5f5;
-  text-align: center;
-  padding: 10px;
-  font-size: 14px;
-  border-top: 1px solid #ccc;
-  direction: rtl; 
-  z-index: 1000;
+.cont3 {
+  opacity: 0;
+  transform: translateX(80px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.footer a {
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
+
+.cont3.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.footer a:hover {
-  text-decoration: underline;
-}
+
+

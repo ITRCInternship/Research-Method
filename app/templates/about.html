@@ -3,18 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <title>درباره ما</title>
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='about.css') }}"
+  />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    
 </head>
+
 <body>
-    <h1>درباره پروژه</h1>
-    <p>این پروژه یک سیستم ساده احراز هویت با استفاده از Flask و SQLite است.</p>
+    <div class="card">
+        <h1>درباره پروژه</h1>
+        <p style="margin-bottom: 30px;">
+            این پروژه یک سیستم ساده احراز هویت با استفاده از Flask و SQLite است.
+        </p>
 
-    <h2>اعضای تیم</h2>
-    <ul>
-        <li> رضایی - توسعه‌دهنده بک‌اند</li>
-        <li> محمدی - طراحی رابط کاربری</li>
-        <li> کریمی - تست و مستندسازی</li>
-    </ul>
+        <h2>اعضای تیم</h2>
+        <div class="team-wrapper">
+            <div class="team-wrapper">
+                <div class="team-member">
+                  <img src="{{ url_for('static', filename='img/ax.jpg') }}" alt="member" class="profile-pic">
+                  <div class="member-name">دکتر عزیزی - سرتیم فنی</div>
+                </div>
+              
+                <div class="team-member">
+                  <img src="{{ url_for('static', filename='img/ax.jpg') }}" alt="member" class="profile-pic">
+                  <div class="member-name">دکتر بکایی - مشاور فنی</div>
+                </div>
+              
+                <div class="team-member">
+                  <img src="{{ url_for('static', filename='img/ax.jpg') }}" alt="member" class="profile-pic">
+                  <div class="member-name">پرورش - توسعه‌دهنده بک‌اند</div>
+                </div>
+              
+                <div class="team-member">
+                  <img src="{{ url_for('static', filename='img/ax.jpg') }}" alt="member" class="profile-pic">
+                  <div class="member-name">رضایی - توسعه‌دهنده بک‌اند</div>
+                </div>
+              
+                <div class="team-member">
+                  <img src="{{ url_for('static', filename='img/ax.jpg') }}" alt="member" class="profile-pic">
+                  <div class="member-name">محمدی - طراحی رابط کاربری</div>
+                </div>
+              
+                <div class="team-member">
+                  <img src="{{ url_for('static', filename='img/ax.jpg') }}" alt="member" class="profile-pic">
+                  <div class="member-name">کریمی - تست و مستندسازی</div>
+                </div>
+              
+                <div class="team-member">
+                  <img src="{{ url_for('static', filename='img/ax.jpg') }}" alt="member" class="profile-pic">
+                  <div class="member-name">گرجی - توسعه‌دهنده فرانت‌اند</div>
+                </div>
+              </div>
+              
+          
 
-    <a href="{{ url_for('auth.login') }}">بازگشت به ورود</a>
+        <div style="display: flex; justify-content: center; gap: 15px; margin-top: 30px;">
+            <!-- <a href="{{ url_for('auth.login') }}" class="main-button">بازگشت به ورود</a> -->
+            <a href="{{ url_for('main.question', qid=0) }}" class="secondary-button">بازگشت به سوالات</a>
+          </div>
+          
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/USERNAME" target="_blank" aria-label="LinkedIn">
+              <i class="bi bi-linkedin"></i>
+            </a>
+            <a href="https://github.com/USERNAME" target="_blank" aria-label="GitHub">
+              <i class="bi bi-github"></i>
+            </a>
+          </div>
+        </div>  
+
+    </div>
+    <script src="{{ url_for('static', filename='js/about.js') }}"></script>
+      
 </body>
 </html>
