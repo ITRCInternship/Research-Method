@@ -28,15 +28,7 @@
         </div>
         <div class="cont3">
 
-          <h2>{{ question.text }}</h2>
-          
-          
-          
-          
-          
-          
-          
-         
+          <h2>{{ question.text }}</h2> 
           <form method="post">
             {% if question.type == 'text' %}
             <textarea name="answer" rows="4" cols="50" required></textarea>
@@ -102,7 +94,7 @@
   </div>
 </div>
 <a href="{{ url_for('main.about') }}">
-  <ion-icon name="people-circle-outline" style="color: rgb(0, 0, 0); font-size: 80px;   position:absolute; top: 20px; right: 20px;"></ion-icon>
+  <ion-icon name="people-circle-outline" style="color: rgb(255, 255, 255); font-size: 80px;   position:absolute; top: 20px; right: 20px;"></ion-icon>
 </a>
 
   </div>

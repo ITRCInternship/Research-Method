@@ -7,7 +7,7 @@
 }
 
 body {
-    background: linear-gradient(to right top, #1e3c72, #3e5f99);
+  background: linear-gradient(135deg, #8de0be, #02b185);
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -19,12 +19,15 @@ body {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(12px);
     border-radius: 20px;
-    padding: 40px;
-    width: 90%;
-    max-width: 600px;
     color: white;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     animation: fadeIn 1s ease-in-out;
+    width: 1400px;
+    max-width: 1400px;
+    padding: 20px;
+    margin: 0 auto; 
+    align-items: center; 
+    
 }
 
 h1, h2 {
@@ -52,10 +55,10 @@ ul li {
 
 }
 
-/* ul li:hover {
+ ul li:hover {
     transform: scale(1.03);
     background-color: rgba(255, 255, 255, 0.2);
-} */
+}
 
 
 
@@ -69,25 +72,10 @@ ul li {
         transform: translateY(0);
     }
 }
-.main-button {
-    display: inline-block;
-    text-align: center;
-    color: rgb(255, 255, 255);
-    background-color: #ff6f61;
-    padding: 12px 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
 
-.main-button:hover {
-    background-color: #ff4b3e;
-    transform: translateY(-3px);
-}
 
 .secondary-button {
-    display: inline-block;
+    
     text-align: center;
     color: #000000;
     background-color: rgba(255, 255, 255, 0.445);
@@ -97,6 +85,10 @@ ul li {
     font-weight: bold;
     transition: all 0.3s ease;
     border: 2px solid #fff;
+    display: flex;
+    justify-content: flex-start; /* چپ چین */
+    margin-top: 700px;
+    margin-left: -250px;
 }
 
 .secondary-button:hover {
@@ -106,133 +98,103 @@ ul li {
     border-color: #fff;
 }
 .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 400px;
-    margin-top: 30px;
-  }
+  display: flex;
+  justify-content: space-between; /* فاصله بین دو آیکون تا گوشه */
+  padding: 0 10px; /* کمی فاصله از لبه‌ها */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  margin-top: 10px;
+}
+
   
   .social-icons a {
     color: #000;
-    font-size: 4rem;
+    font-size: 20px;
     transition: color 0.3s ease, transform 0.3s ease;
-  }
+  } 
   
   .social-icons a:hover {
     color: #ffffff; 
     transform: scale(1.2);
   }
-  .team-photo {
-    width: 60px;                
-    height: 60px;
-    border-radius: 50%;         
-    margin-left: 20px;   
-    vertical-align: middle;        
-    left: -50px;                
-    transition: transform 0.3s ease;  
+  .team-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 40px 50px;
+    justify-content: center;
+    align-items: start;
+    width: 100%; /* یا حداقل بیشتر */
+    max-width: 100%;
   }
   
-  .team-photo:hover {
-    transform: scale(1.2);       
+  .team-member {
+    width: 250px;  /* ثابت و مشخص */
   }
-  .member {
-  display: inline-block;
-  margin: 20px;
-  position: relative;
-}
+  
+  
+  
+  .img-box {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .profile-pic {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  
+  .info-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    color: #000;
+    text-align: center;
+    padding: 10px 5px;
+    transition: all 0.4s ease;
+    overflow: hidden;
+  }
+  
+  .img-box:hover .info-overlay {
+    height: 80px;
+    background-color: #007bff98;
+    color: white;
+  }
+  
+  .member-name {
+    font-size: 20px;
+    transition: color 0.4s ease;
+  }
+  
+  .social-icons {
+    margin-top: 5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+  }
+  
+  .img-box:hover .social-icons {
+    opacity: 1;
+    visibility: visible;
+  }
+  
 
-.photo-wrapper {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  overflow: hidden;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-.member-photo {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.member-name-hover {
-  position: absolute;
-  top: 50%;
-  right: -100%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 8px 12px;
-  border-radius: 20px 0 0 20px;
-  white-space: nowrap;
-  font-size: 0.9rem;
-  transition: right 0.4s ease;
-  font-family: "Vazir", sans-serif;
-}
-
-.photo-wrapper:hover .member-name-hover {
-  right: 100%;
-}
-
-.photo-wrapper:hover .member-photo {
-  transform: scale(1.1);
-}
-.team-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  padding: 40px 20px;
-}
-
-.team-wrapper {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  flex-wrap: wrap;
-  padding: 40px 0;
-}
-
-.team-member {
-  position: relative;
-  width: 160px;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease;
-  text-align: center;
-}
-
-.team-member.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.profile-pic {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.member-name {
-  opacity: 0;
-  transform: translateY(10px);
-  margin-top: 12px;
-  font-size: 25px;
-  color: rgb(255, 255, 255);
-  transition: all 0.4s ease;
-}
-
-.team-member:hover .profile-pic {
-  transform: scale(1.08);
-}
-
-.team-member:hover .member-name {
-  opacity: 1;
-  transform: translateY(0);
-}
+  
+  .social-icons a {
+    margin: 0 6px;
+    color: white;
+    font-size: 20px;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    transform: scale(1.3);         /* ← کمی بزرگ‌تر */
+    color: black;                  /* ← رنگ مشکی هنگام هاور */
+  }
