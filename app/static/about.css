@@ -1,200 +1,101 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    direction: rtl;
-    font-family: 'Vazirmatn', sans-serif;
-}
-
 body {
-  background: linear-gradient(135deg, #8de0be, #02b185);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
+  font-family: 'Vazirmatn', sans-serif;
+  background-color: #20c997;
+  margin: 0;
+  padding: 0;
+  color: #fff;
 }
 
 .card {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    color: white;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 1s ease-in-out;
-    width: 1400px;
-    max-width: 1400px;
-    padding: 20px;
-    margin: 0 auto; 
-    align-items: center; 
-    
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff11;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  text-align: center;
 }
 
 h1, h2 {
-    margin-bottom: 20px;
-    text-align: center;
-    color: #fff;
+  margin-bottom: 20px;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+.project-description {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.8;
 }
 
-ul li {
-    background-color: rgba(255, 255, 255, 0.1);
-    margin-bottom: 10px;
-    padding: 12px 20px;
-    border-radius: 12px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-
+.team-wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 30px;
+  justify-items: center;
+  margin-top: 30px;
 }
 
- ul li:hover {
-    transform: scale(1.03);
-    background-color: rgba(255, 255, 255, 0.2);
+.team-member {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.profile-pic {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
 }
 
+.overlay {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 150, 136, 0.85);
+  color: white;
+  padding: 12px 10px 10px;
+  text-align: center;
+}
+
+.member-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform: scale(1.3);
+}
 
 .secondary-button {
-    
-    text-align: center;
-    color: #000000;
-    background-color: rgba(255, 255, 255, 0.445);
-    padding: 12px 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    border: 2px solid #fff;
-    display: flex;
-    justify-content: flex-start; /* چپ چین */
-    margin-top: 700px;
-    margin-left: -250px;
+  padding: 10px 20px;
+  background-color: white;
+  color: #20c997;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
 .secondary-button:hover {
-    background-color: transparent;
-    color: #fff;
-    transform: translateY(-3px);
-    border-color: #fff;
-}
-.social-icons {
-  display: flex;
-  justify-content: space-between; /* فاصله بین دو آیکون تا گوشه */
-  padding: 0 10px; /* کمی فاصله از لبه‌ها */
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
-  margin-top: 10px;
+  background-color: #f1f1f1;
 }
 
-  
-  .social-icons a {
-    color: #000;
-    font-size: 20px;
-    transition: color 0.3s ease, transform 0.3s ease;
-  } 
-  
-  .social-icons a:hover {
-    color: #ffffff; 
-    transform: scale(1.2);
-  }
-  .team-wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    gap: 40px 50px;
-    justify-content: center;
-    align-items: start;
-    width: 100%; /* یا حداقل بیشتر */
-    max-width: 100%;
-  }
-  
-  .team-member {
-    width: 250px;  /* ثابت و مشخص */
-  }
-  
-  
-  
-  .img-box {
-    position: relative;
-    width: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  
-  .profile-pic {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: 12px;
-    object-fit: cover;
-  }
-  
-  .info-overlay {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-    background-color: white;
-    color: #000;
-    text-align: center;
-    padding: 10px 5px;
-    transition: all 0.4s ease;
-    overflow: hidden;
-  }
-  
-  .img-box:hover .info-overlay {
-    height: 80px;
-    background-color: #007bff98;
-    color: white;
-  }
-  
-  .member-name {
-    font-size: 20px;
-    transition: color 0.4s ease;
-  }
-  
-  .social-icons {
-    margin-top: 5px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-  }
-  
-  .img-box:hover .social-icons {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-
-  
-  .social-icons a {
-    margin: 0 6px;
-    color: white;
-    font-size: 20px;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-  
-  .social-icons a:hover {
-    transform: scale(1.3);         /* ← کمی بزرگ‌تر */
-    color: black;                  /* ← رنگ مشکی هنگام هاور */
-  }
+.button-container {
+  margin-top: 40px;
+}
