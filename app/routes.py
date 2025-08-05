@@ -23,26 +23,42 @@ def index():
         return redirect(url_for('auth.login'))
     session.pop('responses', None)
     return redirect(url_for('main.question', qid=0))
+
+
+
 @main_bp.route('/question/<int:qid>', methods=['GET', 'POST'])
 def question(qid):
     if g.user is None:
         return redirect(url_for('auth.login'))
 
-    questions = current_app.questions
-    total = len(questions)
+    all_questions = current_app.questions
+    responses = session.get('responses', {})
+
+    selected_approach = responses.get('8')
+
+    def should_include(q):
+        cond = q.get('condition')
+        if not cond:
+            return True
+        if selected_approach == 'آمیخته':
+            return cond in ['کمی', 'کیفی']
+        return cond == selected_approach
+
+    filtered_questions = [q for q in all_questions if should_include(q)]
+    total = len(filtered_questions)
 
     if qid >= total:
         return redirect(url_for('main.summary'))
 
+    question = filtered_questions[qid]
+
     if request.method == 'POST':
-        q = questions[qid]
-        if q.get('type') == 'multiple':
+        if question.get('type') == 'multiple':
             answer = request.form.getlist('answer')
         else:
             answer = request.form.get('answer', '')
 
-        responses = session.get('responses', {})
-        responses[str(qid)] = answer
+        responses[str(question['id'])] = answer
         session['responses'] = responses
 
         direction = request.form.get('direction')
@@ -51,7 +67,6 @@ def question(qid):
         return redirect(url_for('main.question', qid=next_q))
 
     progress = int((qid / total) * 100)
-    question = questions[qid]
 
     return render_template(
         'question.html',
@@ -60,6 +75,7 @@ def question(qid):
         total=total,
         progress=progress
     )
+
 
 @main_bp.route('/about')
 def about():
