@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div class="card">
+  <div class="card about-section hidden">
     <h1>درباره پروژه</h1>
     <p class="project-description">
       این پروژه در مرکز نوآوری هوش مصنوعی، به دست گروهی کوچک اما پرتلاش توسعه یافته است. انگیزه‌ی آغاز آن، دغدغه‌ی بسیاری از افراد در زمینه‌ی روش تحقیق و گردآوری داده‌ها بوده است؛ دغدغه‌ای که ما را بر آن داشت تا راه‌حلی هوشمندانه و نوآورانه برای تسهیل این مسیر ارائه دهیم.
@@ -89,6 +89,10 @@
       <a href="{{ url_for('main.question', qid=0) }}" class="secondary-button">بازگشت به سوالات</a>
     </div>
   </div>
+  <script src="{{ url_for('static', filename='js/about.js') }}">
+    
+    
+  </script>
   
   
 </body>

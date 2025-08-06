@@ -148,3 +148,14 @@ h2 {
 .button-container {
   margin-top: 40px;
 }
+.about-section.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.about-section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
