@@ -7,6 +7,7 @@ body {
 }
 
 .card {
+  position: relative; 
   max-width: 1000px;
   margin: 40px auto;
   padding: 30px;
@@ -125,6 +126,10 @@ h2 {
 }
 
 .secondary-button {
+  position: absolute;
+  bottom: 100px;
+  left: 90px;
+
   padding: 10px 20px;
   background-color: rgba(250, 250, 250, 0.945);
   color: #06348a;
@@ -133,11 +138,8 @@ h2 {
   font-weight: bold;
   text-decoration: none;
   transition: background-color 0.5s ease;
-  float: left;
-  position: absolute;
-  top: 1450px;
-  left: 900px;
 }
+
 .secondary-button:hover {
   background-color: #096dca;
   color: #fafafa;
