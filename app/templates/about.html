@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/logo.jpeg') }}">
+
 </head>
 
 <body>
@@ -13,18 +15,19 @@
     <h1>درباره پروژه</h1>
     <p class="project-description">
       این پروژه در مرکز نوآوری هوش مصنوعی، به دست گروهی کوچک اما پرتلاش توسعه یافته است. انگیزه‌ی آغاز آن، دغدغه‌ی بسیاری از افراد در زمینه‌ی روش تحقیق و گردآوری داده‌ها بوده است؛ دغدغه‌ای که ما را بر آن داشت تا راه‌حلی هوشمندانه و نوآورانه برای تسهیل این مسیر ارائه دهیم.
-
-
+      
+      
     </p>
+    <hr style=" border: none;height: 5px;background-color: #ffffff;border-radius: 10px;">
 
     <h2>اعضای تیم</h2>
     <div class="team-wrapper">
+     
 
-      <!-- دکتر مهدی عزیزی -->
       <div class="team-member">
         <img src="{{ url_for('static', filename='img/azizi.jpeg') }}" alt="azizi" class="profile-pic">
         <div class="overlay">
-          <div class="member-title">دکتر مهدی عزیزی - سرتیم فنی</div>
+          <div class="member-title">دکتر مهدی عزیزی <br> سرتیم فنی</div>
           <div class="social-icons">
             <a href="https://github.com/azizi" target="_blank"><i class="bi bi-github"></i></a>
             <a href="https://linkedin.com/in/azizi" target="_blank"><i class="bi bi-linkedin"></i></a>
@@ -32,47 +35,47 @@
         </div>
       </div>
 
-      <!-- دکتر محمد هادی بکایی -->
+
       <div class="team-member">
         <img src="{{ url_for('static', filename='img/bokaei.png') }}" alt="bakaei" class="profile-pic">
         <div class="overlay">
-          <div class="member-title">دکتر محمد هادی بکایی - مشاور فنی</div>
+          <div class="member-title">دکتر محمد هادی بکایی <br> مشاور فنی</div>
           <div class="social-icons">
             <a href="https://github.com/bakaei" target="_blank"><i class="bi bi-github"></i></a>
             <a href="https://linkedin.com/in/bakaei" target="_blank"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
       </div>
+      
 
-      <!-- دکتر غلامحسین رضایت -->
       <div class="team-member">
         <img src="{{ url_for('static', filename='img/ax.jpg') }}" alt="rezaei" class="profile-pic">
         <div class="overlay">
-          <div class="member-title">دکتر غلامحسین رضایت - مشاور فنی</div>
+          <div class="member-title">دکتر غلامحسین رضایت <br> مشاور فنی</div>
           <div class="social-icons">
             <a href="https://github.com/rezaei" target="_blank"><i class="bi bi-github"></i></a>
             <a href="https://linkedin.com/in/rezaei" target="_blank"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
       </div>
+      
 
-      <!-- مهندس علیرضا پرورش -->
       <div class="team-member">
         <img src="{{ url_for('static', filename='img/parvaresh.jpg') }}" alt="parvaresh" class="profile-pic">
         <div class="overlay">
-          <div class="member-title">مهندس علیرضا پرورش - توسعه‌دهنده بک‌اند</div>
+          <div class="member-title">مهندس علیرضا پرورش <br> توسعه‌دهنده بک‌اند</div>
           <div class="social-icons">
             <a href="https://github.com/parvaresh" target="_blank"><i class="bi bi-github"></i></a>
             <a href="https://linkedin.com/in/parvaresh" target="_blank"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
       </div>
+      
 
-      <!-- مهندس حانیه گرجی -->
       <div class="team-member">
         <img src="{{ url_for('static', filename='img/ax.jpg') }}" alt="gorji" class="profile-pic">
         <div class="overlay">
-          <div class="member-title">مهندس حانیه گرجی - توسعه‌دهنده فرانت‌اند</div>
+          <div class="member-title">مهندس هانیه گرجی <br> توسعه‌دهنده فرانت‌اند</div>
           <div class="social-icons">
             <a href="https://github.com/gorji" target="_blank"><i class="bi bi-github"></i></a>
             <a href="https://linkedin.com/in/gorji" target="_blank"><i class="bi bi-linkedin"></i></a>
@@ -86,5 +89,7 @@
       <a href="{{ url_for('main.question', qid=0) }}" class="secondary-button">بازگشت به سوالات</a>
     </div>
   </div>
+  
+  
 </body>
 </html>

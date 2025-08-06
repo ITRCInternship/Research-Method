@@ -1,6 +1,6 @@
 body {
-  font-family: 'Vazirmatn', sans-serif;
-  background-color: #20c997;
+  font-family: "Vazirmatn", sans-serif;
+  background-color: #4ea3d4;
   margin: 0;
   padding: 0;
   color: #fff;
@@ -10,28 +10,35 @@ body {
   max-width: 1000px;
   margin: 40px auto;
   padding: 30px;
-  background-color: #ffffff11;
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  background-color: #ffffff59;
+  border-radius: 60px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   text-align: center;
 }
 
-h1, h2 {
-  margin-bottom: 20px;
+h1,
+h2 {
+  font-size: 50px;
 }
 
 .project-description {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 500;
   line-height: 1.8;
+  margin: 30px;
 }
 
 .team-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 30px;
-  justify-items: center;
-  margin-top: 30px;
+  grid-template-columns: repeat(2, minmax(0, 300px));
+  gap: 50px 130px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.team-wrapper > .team-member:last-child {
+  grid-column: 1 / -1;
+  justify-self: center;
 }
 
 .team-member {
@@ -40,42 +47,77 @@ h1, h2 {
   overflow: hidden;
   background: white;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 300px;
 }
 
 .profile-pic {
   width: 100%;
-  height: 250px;
+  height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.5s ease;
 }
 
 .overlay {
   position: absolute;
   bottom: 0;
-  width: 100%;
-  background: rgba(0, 150, 136, 0.85);
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(0, 150, 117, 0.692);
   color: white;
-  padding: 12px 10px 10px;
   text-align: center;
+  transform: translateY(60%);
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 15px 20px;
+}
+
+.team-member:hover .overlay {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.team-member:hover .profile-pic {
+  transform: scale(1.05);
 }
 
 .member-title {
-  font-size: 14px;
+  font-size: 25px;
   font-weight: bold;
-  margin-bottom: 8px;
   line-height: 1.4;
+  margin-top: 110px;
+  z-index: 2;
 }
 
 .social-icons {
   display: flex;
-  justify-content: center;
-  gap: 10px;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  max-width: 300px;
+  margin-top: auto;
+  font-size: 3rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.team-member:hover .social-icons {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .social-icons a {
   color: white;
-  font-size: 18px;
   transition: transform 0.3s ease;
+  display: inline-flex;
+  align-items: center;
 }
 
 .social-icons a:hover {
@@ -84,16 +126,21 @@ h1, h2 {
 
 .secondary-button {
   padding: 10px 20px;
-  background-color: white;
-  color: #20c997;
-  border-radius: 10px;
+  background-color: rgba(250, 250, 250, 0.945);
+  color: #06348a;
+  border: rgb(13, 96, 190) solid 4px;
+  border-radius: 20px;
   font-weight: bold;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease;
+  float: left;
+  position: absolute;
+  top: 1450px;
+  left: 900px;
 }
-
 .secondary-button:hover {
-  background-color: #f1f1f1;
+  background-color: #096dca;
+  color: #fafafa;
 }
 
 .button-container {
