@@ -18,7 +18,7 @@ body {
 .summary-container {
   width: 1000px;
   margin: auto;
-  background: linear-gradient(135deg, #56e4c5, #016d5e);
+  background: linear-gradient(135deg, #33b181, #023b34);
   padding: 2rem;
   border-radius: 2rem;
   backdrop-filter: blur(6px);
@@ -79,4 +79,14 @@ body {
 .summary-actions a:hover {
   background-color: rgba(248, 132, 0, 0.85);
   color: aliceblue;
+}
+.summary-container.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.summary-container.show {
+  opacity: 1;
+  transform: translateY(0);
 }

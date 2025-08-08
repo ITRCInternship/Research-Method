@@ -1,43 +1,62 @@
+/* انیمیشن پس‌زمینه گرادیان متحرک */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 body {
   font-family: "Vazir", sans-serif;
   direction: rtl;
-  padding: 20px;
-  position: relative;
+  margin: 0;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items:center;
   min-height: 100vh;
-  background-image: url(../img/1.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
+  padding: 20px;
+  background: linear-gradient(-45deg, #41758b, #203a43, #2c5364, #119999, #0780b8);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
   color: white;
+  overflow-x: hidden;
 }
 
+/* کانتینر شیشه‌ای با نور لبه */
 .summary-container {
   width: 1000px;
-  margin: auto;
-  background: linear-gradient(135deg, #56e4c5, #016d5e);
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.26);
+  padding: 2.5rem;
   border-radius: 2rem;
-  backdrop-filter: blur(6px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 0 20px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(84, 85, 85, 0.3);
+  animation: fadeInScale 1s ease forwards;
 }
 
+/* عنوان */
 .summary-container h1 {
   text-align: center;
-  font-size: 2rem;
+  font-size: 2.5rem;
   margin-bottom: 1.5rem;
   color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 
+    0 0 5px rgba(158, 252, 255, 0.8),
+    0 0 15px rgba(0, 0, 0, 0.26),
+    0 0 30px rgba(0, 0, 0, 0.233);
 }
 
+/* متن */
 .summary-container p {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   line-height: 2;
-  color: #fff;
+  color: #fefefe;
+  animation: fadeSlideUp 1.2s ease forwards;
 }
 
+/* دکمه‌ها */
 .summary-actions {
   display: flex;
   justify-content: center;
@@ -46,18 +65,58 @@ body {
 }
 
 .summary-actions a {
-  background-color: blanchedalmond;
-  color: black;
-  padding: 0.6rem 1.2rem;
+  background: linear-gradient(90deg, #0ea774, #098364);
+  color: white;
+  padding: 0.8rem 1.8rem;
   border-radius: 3rem;
-  font-family: "Vazir", sans-serif;
+  font-weight: bold;
   text-decoration: none;
   position: relative;
-  z-index: 1;
-  transition: all 0.25s ease;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 15px rgba(37, 37, 37, 0.6),
+              0 0 30px rgba(86, 87, 87, 0.5);
+}
+
+.summary-actions a::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-20deg);
+  transition: left 0.5s ease;
+}
+
+.summary-actions a:hover::before {
+  left: 100%;
 }
 
 .summary-actions a:hover {
-  background-color: rgba(248, 132, 0, 0.85);
-  color: aliceblue;
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 0 15px rgba(12, 180, 166, 0.6),
+  0 0 30px rgba(27, 123, 139, 0.5);
+}
+
+/* انیمیشن نمایش جاوااسکریپتی */
+.summary-container.hidden {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.summary-container.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* انیمیشن‌های ظریف */
+@keyframes fadeInScale {
+  0% { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeSlideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
