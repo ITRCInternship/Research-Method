@@ -1,6 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, current_app, g
 from .llm.vllm_server import Llm
 from .llm.prompts import research_method_prompt, system_prompt
+import markdown2
+
 
 main_bp = Blueprint('main', __name__)
 
@@ -128,5 +130,5 @@ def result():
     llm_answer = None
     if response and 'choices' in response:
         llm_answer = (response['choices'][0]['message']['content'])
-
+    llm_answer = markdown2.markdown(llm_answer)
     return render_template('result.html', llm_answer=llm_answer)
