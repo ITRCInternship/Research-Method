@@ -75,11 +75,13 @@ body {
     inset 0 -2px 2px rgba(255, 255, 255, 0.5);
 }
 
-.circle .number {
+.container2 .circle .number {
   position: relative;
   color: #fff;
   z-index: 10;
+  line-height: 0rem;
   font-size: 5rem;
+  top: 20px;
 }
 
 .circle .number span {
@@ -87,12 +89,14 @@ body {
   font-weight: 500;
 }
 
-.circle h4 {
+.container2 .circle h4 {
   position: relative;
   color: #fff;
   z-index: 10;
   font-weight: 500;
   font-size: 1.5em;
+  line-height: 0em;
+  top: -20px;
 }
 
 .cont3 {
@@ -165,10 +169,14 @@ button {
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 3rem;
-  font-family: "Vazir";
-  cursor: pointer;
+  font-family: Tahoma;
+  overflow: hidden;
   position: relative;
+  cursor: pointer;
   z-index: 1;
+  font-family: tahoma;
+  top: 20px;
+  right: 40px;
 }
 
 button::before {
@@ -179,7 +187,9 @@ button::before {
   bottom: 0;
   top: 0;
   border-radius: 3rem;
-  background-color: rgba(248, 132, 0, 0.801);
+  height: 180;
+  width: 100;
+  background-color: rgb(245, 150, 7);
   z-index: -1;
   transform: scaleX(0);
   transform-origin: left;
@@ -199,7 +209,6 @@ button:disabled {
   cursor: not-allowed;
 }
 
-/* لامپ و مودال */
 .lamp-btn {
   background: white !important;
   border: none;
@@ -255,4 +264,14 @@ button:disabled {
   right: 15px;
   font-size: 1.5rem;
   cursor: pointer;
+}
+.cont3 {
+  opacity: 0;
+  transform: translateX(80px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.cont3.visible {
+  opacity: 1;
+  transform: translateX(0);
 }
