@@ -41,7 +41,6 @@ def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
 
-from .ollama_client import build_prompt, call_ollama
 from .auth import auth_bp
 from .routes import main_bp
 

@@ -1,0 +1,2 @@
+VLLM_SERVER_URL = ""
+VLLM_MODEL_NAME = ""

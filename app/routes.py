@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, current_app, g
-from .ollama_client import build_prompt, call_ollama
+from .llm.vllm_server import Llm
+from .llm.prompts import research_method_prompt, system_prompt
 
 main_bp = Blueprint('main', __name__)
 
@@ -105,3 +106,27 @@ def summary():
         })
 
     return render_template('summary.html', qa_list=questions_with_answers)
+
+
+
+
+
+@main_bp.route('/result')
+def result():
+    questions = current_app.questions
+    responses = session.get('responses', {})
+
+    combined_text = ""
+    for q in questions:
+        answer = responses.get(str(q['id']), '')
+        combined_text += f"سؤال: {q['text']}\nپاسخ: {answer}\n\n"
+
+    user_prompt = research_method_prompt(combined_text)
+    llm = Llm()
+    response = llm.vllm_inference(user_message=user_prompt, system_message=system_prompt)
+
+    llm_answer = None
+    if response and 'choices' in response:
+        llm_answer = (response['choices'][0]['message']['content'])
+
+    return render_template('result.html', llm_answer=llm_answer)

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>نتیجه گزارش روش تحقیق</title>
-    <style>
-        body { font-family: Tahoma, sans-serif; direction: rtl; padding: 20px; }
-        .result-container { background-color: #f5f5f5; padding: 20px; border-radius: 8px; }
-    </style>
+    <title>نتیجه نهایی</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
 </head>
 <body>
-    <div class="result-container">
-        <h2>گزارش روش تحقیق</h2>
-        <p>{{ result | safe }}</p>
+    <div class="summary-container">
+        <h1>تحلیل روش تحقیق</h1>
+        <p style="white-space: pre-line;">{{ llm_answer | safe }}</p>
+
+        <div class="summary-actions">
+            <a href="{{ url_for('main.index') }}">شروع مجدد</a>
+        </div>
     </div>
 </body>
 </html>
