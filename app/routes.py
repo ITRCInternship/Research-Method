@@ -51,14 +51,19 @@ def question(qid):
         return redirect(url_for('main.summary'))
 
     question = filtered_questions[qid]
+    print(question)
 
     if request.method == 'POST':
-        if question.get('type') == 'multiple':
+        if question.get('type') == 'variables_table':
+            variables_data = request.form.get('variablesData', '[]')
+            responses[str(question['id'])] = variables_data
+        elif question.get('type') == 'multiple':
             answer = request.form.getlist('answer')
+            responses[str(question['id'])] = answer
         else:
             answer = request.form.get('answer', '')
+            responses[str(question['id'])] = answer
 
-        responses[str(question['id'])] = answer
         session['responses'] = responses
 
         direction = request.form.get('direction')
@@ -77,6 +82,26 @@ def question(qid):
     )
 
 
+
 @main_bp.route('/about')
 def about():
     return render_template('about.html')
+
+
+@main_bp.route('/summary')
+def summary():
+    if g.user is None:
+        return redirect(url_for('auth.login'))
+
+    all_questions = current_app.questions
+    responses = session.get('responses', {})
+
+    questions_with_answers = []
+    for q in all_questions:
+        answer = responses.get(str(q['id']), None)
+        questions_with_answers.append({
+            'question': q['text'],
+            'answer': answer
+        })
+
+    return render_template('summary.html', qa_list=questions_with_answers)
