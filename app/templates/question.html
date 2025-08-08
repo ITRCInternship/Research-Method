@@ -3,113 +3,155 @@
 <head>
   <meta charset="UTF-8" />
   <title>سوال {{ qid + 1 }} از {{ total }}</title>
-  <link
-    rel="stylesheet"
-    href="{{ url_for('static', filename='question.css') }}"
-  />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='question.css') }}" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='img/logo.jpeg') }}">
 </head>
 
 <body>
-  <div class="page"> 
+  <div class="page">
     <div class="container2">
-   
       <div class="question-container-wrapper">
         <div class="question-container">
-        <div
-          class="circle"
-          data-degree="{{ progress }}"
-          data-color="#e75480"
-        >
-          <h2 class="number">{{ progress }}<span>%</span></h2>
-          <h4>پیشرفت</h4>
-        </div>
-        <div class="cont3">
+          <div class="circle" data-degree="{{ progress }}" data-color="#e75480">
+            <h2 class="number">{{ progress }}<span>%</span></h2>
+            <h4>پیشرفت</h4>
+          </div>
 
-          <h2>{{ question.text }}</h2> 
-          <form method="post">
-            {% if question.type == 'text' %}
-            <textarea name="answer" rows="4" cols="50" required></textarea>
-            {% elif question.type == 'single' %}
-            {% for option in question.options %}
-            <div>
-              <input
-                type="radio"
-                id="opt{{ loop.index }}"
-                name="answer"
-                value="{{ option }}"
-                required
-              />
-              <label for="opt{{ loop.index }}">{{ option }}</label>
-            </div>
-            {% endfor %}
-            {% elif question.type == 'multiple' %}
-            {% for option in question.options %}
-            <div>
-              <input
-                type="checkbox"
-                id="opt{{ loop.index }}"
-                name="answer"
-                value="{{ option }}"
-              />
-              <label for="opt{{ loop.index }}">{{ option }}</label>
-            </div>
-            {% endfor %}
-            {% endif %}
-      
-            <div class="actions">
-              <button
-                type="submit"
-                name="direction"
-                value="prev"
-                {% if qid == 0 %}disabled{% endif %}
-              >
-                قبلی
+          <div class="cont3">
+            <h2>{{ question.text }}</h2>
+
+            <form method="post">
+              {% if question.type == 'text' %}
+              <textarea name="answer" rows="4" cols="50" required></textarea>
+
+              {% elif question.type == 'single' %}
+              {% for option in question.options %}
+              <div>
+                <input type="radio" id="opt{{ loop.index }}" name="answer" value="{{ option }}" required />
+                <label for="opt{{ loop.index }}">{{ option }}</label>
+              </div>
+              {% endfor %}
+
+              {% elif question.type == 'multiple' %}
+              {% for option in question.options %}
+              <div>
+                <input type="checkbox" id="opt{{ loop.index }}" name="answer" value="{{ option }}" />
+                <label for="opt{{ loop.index }}">{{ option }}</label>
+              </div>
+              {% endfor %}
+
+              {% elif question.type == 'variables_table' %}
+              <div class="variables-section">
+                <table id="variablesTable" class="variables-table">
+                  <thead>
+                    <tr>
+                      <th>نام متغیر</th>
+                      <th>نقش</th>
+                      <th>تعریف مفهومی</th>
+                      <th>تعریف عملیاتی</th>
+                      <th>مقیاس</th>
+                      <th>عملیات</th>
+                    </tr>
+                  </thead>
+                  <tbody id="variablesBody"></tbody>
+                </table>
+
+                <div class="actions">
+                  <button type="button" class="btn-add" onclick="addVariableRow()">افزودن متغیر</button>
+                </div>
+                <input type="hidden" name="variablesData" id="variablesData">
+              </div>
+              {% endif %}
+
+              <div class="actions">
+                <button type="submit" name="direction" value="prev" {% if qid == 0 %}disabled{% endif %}>
+                  قبلی
+                </button>
+                <button type="submit" name="direction" value="next">
+                  {{ 'بعدی' if qid < total - 1 else 'خلاصه' }}
+                </button>
+              </div>
+
+              <button id="lampBtn" class="lamp-btn" type="button">
+                <i id="lampIcon" class="bi bi-lightbulb"></i>
               </button>
-              <button
-                type="submit"
-                name="direction"
-                value="next"
-              >
-                {{ 'بعدی' if qid < total - 1 else 'خلاصه' }}
-              </button>
-              
-            </div>
-            <button id="lampBtn" class="lamp-btn" type="button">
-              <i id="lampIcon" class="bi bi-lightbulb"></i>
-            </button>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<div id="helpModal" class="modal">
-  <div class="modal-content">
-    <span id="closeModal" class="close">&times;</span>
-    <div class="explain">
-      توضیحات: {{ question.explain }}
-    </div>
-  </div>
-</div>
-<a href="{{ url_for('main.about') }}">
-  <ion-icon name="people-circle-outline" style="color: rgb(255, 255, 255); font-size: 80px;   position:absolute; top: 20px; right: 20px;"></ion-icon>
-</a>
 
+    <div id="helpModal" class="modal">
+      <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <div class="explain">
+          توضیحات: {{ question.explain }}
+        </div>
+      </div>
+    </div>
+
+    <a href="{{ url_for('main.about') }}">
+      <ion-icon name="people-circle-outline" style="color: rgb(255, 255, 255); font-size: 80px; position:absolute; top: 20px; right: 20px;"></ion-icon>
+    </a>
   </div>
- 
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <!-- Scripts -->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="{{ url_for('static', filename='js/circle.js') }}"></script>
   <script src="{{ url_for('static', filename='js/question-animation.js') }}"></script>
   <script src="{{ url_for('static', filename='js/menu.js') }}"></script>
   <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
-  
 
+  <!-- جدول متغیرها -->
+  <script>
+    function addVariableRow() {
+      const tbody = document.getElementById("variablesBody");
+      const row = document.createElement("tr");
 
+      row.innerHTML = `
+        <td><input type="text" class="form-control" name="var_name"></td>
+        <td>
+          <select class="form-control" name="var_role">
+            <option value="مستقل">مستقل</option>
+            <option value="وابسته">وابسته</option>
+            <option value="مداخله‌گر">مداخله‌گر</option>
+          </select>
+        </td>
+        <td><input type="text" class="form-control" name="var_conceptual"></td>
+        <td><input type="text" class="form-control" name="var_operational"></td>
+        <td>
+          <select class="form-control" name="var_scale">
+            <option value="اسمی">اسمی</option>
+            <option value="ترتیبی">ترتیبی</option>
+            <option value="فاصله‌ای">فاصله‌ای</option>
+            <option value="نسبی">نسبی</option>
+          </select>
+        </td>
+        <td><button type="button" class="btn-remove" onclick="this.closest('tr').remove()">حذف</button></td>
+      `;
 
+      tbody.appendChild(row);
+    }
+
+    document.querySelector("form").addEventListener("submit", function(e) {
+      const rows = document.querySelectorAll("#variablesBody tr");
+      let data = [];
+
+      rows.forEach(row => {
+        const varData = {
+          name: row.querySelector('[name="var_name"]').value,
+          role: row.querySelector('[name="var_role"]').value,
+          conceptual: row.querySelector('[name="var_conceptual"]').value,
+          operational: row.querySelector('[name="var_operational"]').value,
+          scale: row.querySelector('[name="var_scale"]').value,
+        };
+        data.push(varData);
+      });
+
+      document.getElementById("variablesData").value = JSON.stringify(data);
+    });
+  </script>
 </body>
 </html>

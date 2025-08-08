@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>مرور پاسخ‌ها</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='summary.css') }}">
+</head>
+<body>
+
+<div class="summary-container">
+  <h1>مرور پاسخ‌ها</h1>
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>سؤال</th>
+        <th>پاسخ</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for qa in qa_list %}
+      <tr>
+        <td>{{ qa.question }}</td>
+        <td>{{ qa.answer }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <div class="summary-actions">
+    <a href="{{ url_for('main.question', qid=0) }}">شروع دوباره</a>
+    <a href="{{ url_for('auth.logout') }}">خروج</a>
+  </div>
+</div>
+
+</body>
+</html>
